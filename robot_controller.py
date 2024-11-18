@@ -2,6 +2,7 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 import time
+import math
 
 class SquareTrajectoryController(Node):
     def __init__(self):
@@ -41,7 +42,7 @@ class SquareTrajectoryController(Node):
         side_length = 2.0  # meters
         speed = 0.2  # meters per second
         angular_speed = 0.5  # radians per second
-        turn_duration = 1.57 / angular_speed  # Approx. 90 degrees turn
+        turn_duration = (math.pi/2) / angular_speed  # 90 degrees turn
 
         for i in range(4):  # Four sides of the square
             self.move_straight(speed, side_length / speed)  # Move forward

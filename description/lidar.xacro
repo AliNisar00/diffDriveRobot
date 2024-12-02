@@ -24,6 +24,10 @@
         </xacro:inertial_cylinder>
     </link>
 
+    <material name="red">
+        <color rgba="1 0 0 1"/>
+    </material>
+
     <gazebo reference="lidar">
         <material>Gazebo/Red</material>
         ... Yet to put stuff here ...

@@ -30,7 +30,17 @@
 
     <gazebo reference="lidar">
         <material>Gazebo/Red</material>
-        ... Yet to put stuff here ...
+        <sensor name="lidar" type="ray">
+            <pose> 0 0 0 0 0 0 </pose>
+            <visualize>true</visualize>
+            <update_rate>10</update_rate>
+            <ray> 
+                ...to fill later...       
+            </ray>
+            <plugin name="lidar_controller" filename="libgazebo_ros_ray_sensor.so">
+            ...to fill later...
+            </plugin>
+        </sensor>
     </gazebo>
 
 </robot>

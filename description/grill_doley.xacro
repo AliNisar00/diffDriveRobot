@@ -18,7 +18,6 @@
         <color rgba="0 0 0 1"/>
     </material>
 
-    <!-- Robot Base -->
     <link name="base_link">
     </link>
 
@@ -51,36 +50,15 @@
         <material>Gazebo/White</material>
     </gazebo>
 
-    <!-- Cart (Four-Wheel Cart) -->
-    <link name="cart">
-        <visual>
-            <origin xyz="0 0.5 0.075" rpy="0 0 0"/>
-            <geometry>
-                <box size="0.4 0.3 0.15"/>
-            </geometry>
-            <material name="orange"/>
-        </visual>
-        <collision>
-            <origin xyz="0 0.5 0.075" rpy="0 0 0"/>
-            <geometry>
-                <box size="0.4 0.3 0.15"/>
-            </geometry>
-        </collision>
-        <xacro:inertial_box mass="1.0" x="0.4" y="0.3" z="0.15">
-            <origin xyz="0 0.5 0.075" rpy="0 0 0"/>
-        </xacro:inertial_box>
-    </link>
-
-    <!-- Cart Wheels (4 Wheels) -->
-    <!-- FRONT LEFT WHEEL -->
-    <joint name="cart_front_left_wheel_joint" type="continuous">
-        <parent link="cart"/>
-        <child link="cart_front_left_wheel"/>
-        <origin xyz="0.1 0.15 0" rpy="-${pi/2} 0 0"/>
+    <!-- LEFT REAR WHEEL -->
+    <joint name="left_rear_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_rear_wheel"/>
+        <origin xyz="0 0.175 0" rpy="-${pi/2} 0 0"/>
         <axis xyz="0 0 1"/>
     </joint>
 
-    <link name="cart_front_left_wheel">
+    <link name="left_rear_wheel">
         <visual>
             <geometry>
                 <cylinder length="0.04" radius="0.05" />
@@ -97,15 +75,19 @@
         </xacro:inertial_cylinder>
     </link>
 
-    <!-- FRONT RIGHT WHEEL -->
-    <joint name="cart_front_right_wheel_joint" type="continuous">
-        <parent link="cart"/>
-        <child link="cart_front_right_wheel"/>
-        <origin xyz="0.1 -0.15 0" rpy="-${pi/2} 0 0"/>
-        <axis xyz="0 0 1"/>
+    <gazebo reference="left_rear_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <!-- RIGHT REAR WHEEL -->
+    <joint name="right_rear_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_rear_wheel"/>
+        <origin xyz="0 -0.175 0" rpy="${pi/2} 0 0"/>
+        <axis xyz="0 0 -1"/>
     </joint>
 
-    <link name="cart_front_right_wheel">
+    <link name="right_rear_wheel">
         <visual>
             <geometry>
                 <cylinder length="0.04" radius="0.05" />
@@ -122,15 +104,19 @@
         </xacro:inertial_cylinder>
     </link>
 
-    <!-- REAR LEFT WHEEL -->
-    <joint name="cart_rear_left_wheel_joint" type="continuous">
-        <parent link="cart"/>
-        <child link="cart_rear_left_wheel"/>
-        <origin xyz="-0.1 0.15 0" rpy="-${pi/2} 0 0"/>
+    <gazebo reference="right_rear_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <!-- LEFT FRONT WHEEL -->
+    <joint name="left_front_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_front_wheel"/>
+        <origin xyz="0.3 0.175 0" rpy="-${pi/2} 0 0"/>
         <axis xyz="0 0 1"/>
     </joint>
 
-    <link name="cart_rear_left_wheel">
+    <link name="left_front_wheel">
         <visual>
             <geometry>
                 <cylinder length="0.04" radius="0.05" />
@@ -147,15 +133,19 @@
         </xacro:inertial_cylinder>
     </link>
 
-    <!-- REAR RIGHT WHEEL -->
-    <joint name="cart_rear_right_wheel_joint" type="continuous">
-        <parent link="cart"/>
-        <child link="cart_rear_right_wheel"/>
-        <origin xyz="-0.1 -0.15 0" rpy="-${pi/2} 0 0"/>
-        <axis xyz="0 0 1"/>
+    <gazebo reference="left_front_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <!-- RIGHT FRONT WHEEL -->
+    <joint name="right_front_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_front_wheel"/>
+        <origin xyz="0.3 -0.175 0" rpy="${pi/2} 0 0"/>
+        <axis xyz="0 0 -1"/>
     </joint>
 
-    <link name="cart_rear_right_wheel">
+    <link name="right_front_wheel">
         <visual>
             <geometry>
                 <cylinder length="0.04" radius="0.05" />
@@ -172,33 +162,7 @@
         </xacro:inertial_cylinder>
     </link>
 
-    <!-- Hitch Joint (Connecting Robot to Cart) -->
-    <joint name="hitch_joint" type="revolute">
-        <parent link="chassis"/>
-        <child link="cart"/>
-        <origin xyz="0.3 0 0" rpy="0 0 0"/>
-        <axis xyz="0 1 0"/>
-        <limit lower="-1.0" upper="1.0" effort="100" velocity="1.0"/>
-    </joint>
-
-    <gazebo reference="cart">
-        <material>Gazebo/Orange</material>
-    </gazebo>
-
-    <gazebo reference="cart_front_left_wheel">
+    <gazebo reference="right_front_wheel">
         <material>Gazebo/Blue</material>
     </gazebo>
-
-    <gazebo reference="cart_front_right_wheel">
-        <material>Gazebo/Blue</material>
-    </gazebo>
-
-    <gazebo reference="cart_rear_left_wheel">
-        <material>Gazebo/Blue</material>
-    </gazebo>
-
-    <gazebo reference="cart_rear_right_wheel">
-        <material>Gazebo/Blue</material>
-    </gazebo>
-
 </robot>

@@ -139,55 +139,55 @@
     </gazebo>
 
 
-    <!--
-
+    <!-- Cart -->
     <joint name="cart_joint" type="revolute">
         <parent link="chassis"/>
         <child link="cart"/>
-        <origin xyz="-0.15 0 0" rpy="0 0 ${pi}"/>
+        <origin xyz="-0.5334 0 0" rpy="0 0 ${pi}"/>
         <axis xyz="0 0 1"/>
         <limit effort="10" velocity="1.0" lower="-1.57" upper="1.57"/>
     </joint>
 
     <link name="cart">
         <visual>
-            <origin xyz="0.15 0 0.075" rpy="0 0 0"/>
+            <origin xyz="0.9 0 1.12" rpy="0 0 0"/>
             <geometry>
-                <box size="0.3 0.3 0.15"/>
+                <box size="1.8 1.11 2.24"/>
             </geometry>
             <material name="white"/>
         </visual>
         <collision>
-            <origin xyz="0.15 0 0.075" rpy="0 0 0"/>
+            <origin xyz="0.9 0 1.12" rpy="0 0 0"/>
             <geometry>
-                <box size="0.3 0.3 0.15"/>
+                <box size="1.8 1.11 2.24"/>
             </geometry>
         </collision>
-        <xacro:inertial_box mass="0.5" x="0.3" y="0.3" z="0.15">
-            <origin xyz="0.15 0 0.075" rpy="0 0 0"/>
+        <xacro:inertial_box mass="200" x="1.8" y="1.11" z="2.24">
+            <origin xyz="0.9 0 1.12" rpy="0 0 0"/>
         </xacro:inertial_box>
     </link>
 
+    <!-- Cart Left Wheel -->
     <joint name="cart_left_wheel_joint" type="continuous">
         <parent link="cart"/>
         <child link="cart_left_wheel"/>
-        <origin xyz="0.28 0.175 0" rpy="-${pi/2} 0 0"/>
+        <origin xyz="1.6 0.55 0" rpy="-${pi/2} 0 0"/>
         <axis xyz="0 0 1"/>
     </joint>
 
     <link name="cart_left_wheel">
         <visual>
             <geometry>
-                <cylinder length="0.04" radius="0.05" />
+                <cylinder length="0.2" radius="0.15" />
             </geometry>
             <material name="blue"/>
         </visual>
         <collision>
             <geometry>
-                <cylinder length="0.04" radius="0.05" />
+                <cylinder length="0.2" radius="0.15" />
             </geometry>
         </collision>
-        <xacro:inertial_cylinder mass="0.1" length="0.05" radius="0.05">
+        <xacro:inertial_cylinder mass="5" length="0.2" radius="0.15">
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_cylinder>
     </link>
@@ -196,26 +196,27 @@
         <material>Gazebo/Blue</material>
     </gazebo>
 
+    <!-- Cart Right Wheel -->
     <joint name="cart_right_wheel_joint" type="continuous">
         <parent link="cart"/>
         <child link="cart_right_wheel"/>
-        <origin xyz="0.28 -0.175 0" rpy="${pi/2} 0 0"/>
+        <origin xyz="1.6 -0.55 0" rpy="${pi/2} 0 0"/>
         <axis xyz="0 0 -1"/>
     </joint>
 
     <link name="cart_right_wheel">
         <visual>
             <geometry>
-                <cylinder length="0.04" radius="0.05" />
+                <cylinder length="0.2" radius="0.15" />
             </geometry>
             <material name="blue"/>
         </visual>
         <collision>
             <geometry>
-                <cylinder length="0.04" radius="0.05" />
+                <cylinder length="0.2" radius="0.15" />
             </geometry>
         </collision>
-        <xacro:inertial_cylinder mass="0.1" length="0.05" radius="0.05">
+        <xacro:inertial_cylinder mass="5" length="0.2" radius="0.15">
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_cylinder>
     </link>
@@ -224,6 +225,8 @@
         <material>Gazebo/Blue</material>
     </gazebo>
 
+
+    <!--
     <joint name="cart2_joint" type="revolute">
         <parent link="cart"/>
         <child link="cart2"/>

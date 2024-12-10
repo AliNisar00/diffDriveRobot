@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
-    <joint name="lidar_joint" type="fixed">
+    <joint name="lidar_r_joint" type="fixed">
         <parent link="chassis"/>
-        <child link="lidar"/>
-        <origin xyz="0.1 0 0.175" rpy="0 0 0"/>
+        <child link="lidar_r"/>
+        <origin xyz="1.65 -0.4 1.175" rpy="0 0 0"/>
     </joint>
 
-    <link name="lidar">
+    <link name="lidar_r">
         <visual>
             <geometry>
                 <cylinder radius="0.05" length="0.04"/>
             </geometry>
-            <material name="red"/>
+            <material name="yello"/>
         </visual>
         <collision>
             <geometry>
@@ -24,13 +24,13 @@
         </xacro:inertial_cylinder>
     </link>
 
-    <material name="red">
+    <material name="yello">
         <color rgba="1 0 0 1"/>
     </material>
 
-    <gazebo reference="lidar">
-        <material>Gazebo/Red</material>
-        <sensor name="lidar" type="ray">
+    <gazebo reference="lidar_r">
+        <material>Gazebo/Yellow</material>
+        <sensor name="lidar_r" type="ray">
             <pose> 0 0 0 0 0 0 </pose>
             <visualize>true</visualize>
             <update_rate>10</update_rate>
@@ -47,12 +47,12 @@
                     <max>12</max>
                 </range>            
             </ray>
-            <plugin name="lidar_controller" filename="libgazebo_ros_ray_sensor.so">
+            <plugin name="lidar_r_controller" filename="libgazebo_ros_ray_sensor.so">
                 <ros>
                     <argument>~/out:=scan</argument>
                 </ros>
                 <output_type>sensor_msgs/LaserScan</output_type>
-                <frame_name>lidar</frame_name>
+                <frame_name>lidar_r</frame_name>
             </plugin>
         </sensor>
     </gazebo>

@@ -41,7 +41,7 @@
                 <box size="1.645 0.8 1.8"/>
             </geometry>
         </collision>
-        <xacro:inertial_box mass="100" x="1.645" y="0.8" z="1.8">
+        <xacro:inertial_box mass="50" x="1.645" y="0.8" z="1.8">
             <origin xyz="0.8225 0 0.85" rpy="0 0 0"/>
         </xacro:inertial_box>
     </link>
@@ -70,7 +70,7 @@
                 <cylinder length="0.1" radius="0.2" />
             </geometry>
         </collision>
-        <xacro:inertial_cylinder mass="10" length="0.1" radius="0.2">
+        <xacro:inertial_cylinder mass="5" length="0.1" radius="0.2">
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_cylinder>
     </link>
@@ -99,7 +99,7 @@
                 <cylinder length="0.1" radius="0.2" />
             </geometry>
         </collision>
-        <xacro:inertial_cylinder mass="10" length="0.1" radius="0.2">
+        <xacro:inertial_cylinder mass="5" length="0.1" radius="0.2">
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_cylinder>
     </link>
@@ -127,7 +127,7 @@
                 <sphere radius="0.1" />
             </geometry>
         </collision>
-        <xacro:inertial_sphere mass="10" radius="0.1">
+        <xacro:inertial_sphere mass="5" radius="0.1">
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_sphere>
     </link>
@@ -150,19 +150,19 @@
 
     <link name="cart">
         <visual>
-            <origin xyz="0.9 0 1.12" rpy="0 0 0"/>
+            <origin xyz="0.9 0 0.7" rpy="0 0 0"/>
             <geometry>
-                <box size="1.8 1.11 2.24"/>
+                <box size="1.8 1.11 1.5"/>
             </geometry>
             <material name="white"/>
         </visual>
         <collision>
             <origin xyz="0.9 0 1.12" rpy="0 0 0"/>
             <geometry>
-                <box size="1.8 1.11 2.24"/>
+                <box size="1.8 1.11 1.5"/>
             </geometry>
         </collision>
-        <xacro:inertial_box mass="200" x="1.8" y="1.11" z="2.24">
+        <xacro:inertial_box mass="50" x="1.8" y="1.11" z="1.5">
             <origin xyz="0.9 0 1.12" rpy="0 0 0"/>
         </xacro:inertial_box>
     </link>
@@ -226,30 +226,31 @@
     </gazebo>
 
 
+    <!-- 2.3334 -->
     <!-- Cart 2 -->
     <joint name="cart2_joint" type="revolute">
         <parent link="cart"/>
         <child link="cart2"/>
-        <origin xyz="2.3334 0 0" rpy="0 0 0"/>
+        <origin xyz="2.7334 0 0" rpy="0 0 0"/>
         <axis xyz="0 0 1"/>
         <limit effort="10" velocity="1.0" lower="-1.57" upper="1.57"/>
     </joint>
 
     <link name="cart2">
         <visual>
-            <origin xyz="0.9 0 1.12" rpy="0 0 0"/>
+            <origin xyz="0.9 0 0.7" rpy="0 0 0"/>
             <geometry>
-                <box size="1.8 1.11 2.24"/>
+                <box size="1.8 1.11 1.5"/>
             </geometry>
             <material name="white"/>
         </visual>
         <collision>
             <origin xyz="0.9 0 1.12" rpy="0 0 0"/>
             <geometry>
-                <box size="1.8 1.11 2.24"/>
+                <box size="1.8 1.11 1.5"/>
             </geometry>
         </collision>
-        <xacro:inertial_box mass="200" x="1.8" y="1.11" z="2.24">
+        <xacro:inertial_box mass="20" x="1.8" y="1.11" z="1.5">
             <origin xyz="0.9 0 1.12" rpy="0 0 0"/>
         </xacro:inertial_box>
     </link>

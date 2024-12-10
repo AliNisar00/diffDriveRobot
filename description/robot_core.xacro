@@ -311,4 +311,89 @@
         <material>Gazebo/Blue</material>
     </gazebo>
 
+
+    <!-- Cart 3: S/S Doley -->
+    <joint name="cart3_joint" type="revolute">
+        <parent link="cart2"/>
+        <child link="cart3"/>
+        <origin xyz="2.7334 0 0" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit effort="10" velocity="1.0" lower="-1.57" upper="1.57"/>
+    </joint>
+
+    <link name="cart3">
+        <visual>
+            <origin xyz="0.9 0 0.7" rpy="0 0 0"/>
+            <geometry>
+                <box size="2.03 0.765 1.5"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <origin xyz="0.9 0 1.12" rpy="0 0 0"/>
+            <geometry>
+                <box size="2.03 0.765 1.5"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="20" x="2.03" y="0.765" z="1.5">
+            <origin xyz="0.9 0 1.12" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <joint name="cart3_left_wheel_joint" type="continuous">
+        <parent link="cart3"/>
+        <child link="cart3_left_wheel"/>
+        <origin xyz="1.6 0.55 0" rpy="-${pi/2} 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="cart3_left_wheel">
+        <visual>
+            <geometry>
+                <cylinder length="0.2" radius="0.15" />
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.2" radius="0.15" />
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="5" length="0.2" radius="0.15">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <gazebo reference="cart3_left_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <joint name="cart3_right_wheel_joint" type="continuous">
+        <parent link="cart3"/>
+        <child link="cart3_right_wheel"/>
+        <origin xyz="1.6 -0.55 0" rpy="${pi/2} 0 0"/>
+        <axis xyz="0 0 -1"/>
+    </joint>
+
+    <link name="cart3_right_wheel">
+        <visual>
+            <geometry>
+                <cylinder length="0.2" radius="0.15" />
+            </geometry>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.2" radius="0.15" />
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="5" length="0.2" radius="0.15">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <gazebo reference="cart3_right_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
 </robot>

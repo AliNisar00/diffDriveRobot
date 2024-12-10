@@ -227,7 +227,7 @@
 
 
     <!-- 2.3334 -->
-    <!-- Cart 2 -->
+    <!-- Cart 2: Grill Doley -->
     <joint name="cart2_joint" type="revolute">
         <parent link="cart"/>
         <child link="cart2"/>

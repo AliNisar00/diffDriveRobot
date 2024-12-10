@@ -3,8 +3,8 @@
 
     <xacro:include filename="robot_core.xacro" />
     <xacro:include filename="gazebo_control.xacro" />
+
+    <!-- Sensors have been disabled until I scale them up -->
     <!-- <xacro:include filename="lidar.xacro" /> -->
-    <!-- <xacro:include filename="ultrasonic_t1r1.xacro" /> -->
-    <!-- <xacro:include filename="ultrasonic_t1l1.xacro" /> -->
 
 </robot>

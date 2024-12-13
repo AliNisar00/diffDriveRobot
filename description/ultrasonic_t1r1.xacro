@@ -4,7 +4,7 @@
     <joint name="ultrasonic_t1r1_joint" type="fixed">
         <parent link="cart"/>
         <child link="ultrasonic_t1r1"/>
-        <origin xyz="0.15 0.10 0.175" rpy="0 0 ${pi/2}"/>
+        <origin xyz="-0.7 0.65 1" rpy="0 0 ${pi/2}"/>
     </joint>
 
     <link name="ultrasonic_t1r1">

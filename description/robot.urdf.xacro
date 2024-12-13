@@ -22,4 +22,6 @@
     <xacro:include filename="ultrasonic_t3r2.xacro" />
     <xacro:include filename="ultrasonic_t3l2.xacro" />
 
+    <xacro:include filename="camera_ray.xacro" />
+
 </robot>

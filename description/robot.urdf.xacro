@@ -3,11 +3,18 @@
 
     <xacro:include filename="robot_core.xacro" />
     <xacro:include filename="gazebo_control.xacro" />
+
     <xacro:include filename="lidar_l.xacro" />
     <xacro:include filename="lidar_r.xacro" />
+    
     <xacro:include filename="ultrasonic_t1r1.xacro" />
     <xacro:include filename="ultrasonic_t1l1.xacro" />
     <xacro:include filename="ultrasonic_t1l2.xacro" />
     <xacro:include filename="ultrasonic_t1r2.xacro" />
+
+    <xacro:include filename="ultrasonic_t2l1.xacro" />
+    <xacro:include filename="ultrasonic_t2r1.xacro" />
+    <xacro:include filename="ultrasonic_t2l2.xacro" />
+    <xacro:include filename="ultrasonic_t2r2.xacro" />
 
 </robot>

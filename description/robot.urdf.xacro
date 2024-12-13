@@ -7,5 +7,7 @@
     <xacro:include filename="lidar_r.xacro" />
     <xacro:include filename="ultrasonic_t1r1.xacro" />
     <xacro:include filename="ultrasonic_t1l1.xacro" />
+    <xacro:include filename="ultrasonic_t1l2.xacro" />
+    <xacro:include filename="ultrasonic_t1r2.xacro" />
 
 </robot>

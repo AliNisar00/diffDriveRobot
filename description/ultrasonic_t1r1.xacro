@@ -38,13 +38,13 @@
                 <scan>
                     <horizontal>
                         <samples>15</samples>
-                        <min_angle>-0.2618</min_angle>
-                        <max_angle>0.2618</max_angle>
+                        <min_angle>-0.4363</min_angle>
+                        <max_angle>0.4363</max_angle>
                     </horizontal>
                 </scan>
                 <range>
                     <min>0.3</min>
-                    <max>4</max>
+                    <max>3.6</max>
                 </range>            
             </ray>
             <plugin name="ultrasonic_t1r1_controller" filename="libgazebo_ros_ray_sensor.so">

@@ -12,8 +12,6 @@
     <xacro:include filename="ultrasonic_t1l1.xacro" />
     <xacro:include filename="ultrasonic_t1l2.xacro" />
     <xacro:include filename="ultrasonic_t1r2.xacro" />
-    <xacro:include filename="ultrasonic_t1l3.xacro" />
-    <xacro:include filename="ultrasonic_t1r3.xacro" />
 
     <xacro:include filename="ultrasonic_t2l1.xacro" />
     <xacro:include filename="ultrasonic_t2r1.xacro" />

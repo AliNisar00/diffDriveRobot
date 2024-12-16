@@ -1,10 +1,13 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
 
+    <!-- This is the main robot description file that calls the core robot description and control -->
+    <!-- Details about the robot and control can be found in the MR project report -->
+    <!-- There are other files in the description folder but they are not used in this project -->
     <xacro:include filename="robot_core.xacro" />
     <xacro:include filename="gazebo_control.xacro" />
 
-    <!-- Sensors have been disabled until I scale them up -->
+    <!-- Sensors have been disabled as they are not useful for MR project -->
     <!-- <xacro:include filename="lidar.xacro" /> -->
 
 </robot>

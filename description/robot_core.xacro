@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- This is the description of the entire robot from the differential drive truck (called "chassis" here) to 
+    the two grill doleys (called "cart 1" and "cart 2" here) that it is towing -->
     <xacro:include filename="inertial_macros.xacro" />
 
     <material name="white">
@@ -21,6 +23,7 @@
     <link name="base_link">
     </link>
 
+    <!-- TOW TRUCK -->
     <joint name="chassis_joint" type="fixed">
         <parent link="base_link"/>
         <child link="chassis"/>
@@ -139,7 +142,7 @@
     </gazebo>
 
 
-    <!-- Cart -->
+    <!-- CART 1 -->
     <joint name="cart_joint" type="revolute">
         <parent link="chassis"/>
         <child link="cart"/>
@@ -167,7 +170,7 @@
         </xacro:inertial_box>
     </link>
 
-    <!-- Cart Left Wheel -->
+    <!-- CART 1 LEFT WHEEL -->
     <joint name="cart_left_wheel_joint" type="continuous">
         <parent link="cart"/>
         <child link="cart_left_wheel"/>
@@ -196,7 +199,7 @@
         <material>Gazebo/Blue</material>
     </gazebo>
 
-    <!-- Cart Right Wheel -->
+    <!-- CART 1 RIGHT WHEEL -->
     <joint name="cart_right_wheel_joint" type="continuous">
         <parent link="cart"/>
         <child link="cart_right_wheel"/>
@@ -226,8 +229,7 @@
     </gazebo>
 
 
-    <!-- 2.3334 -->
-    <!-- Cart 2 -->
+    <!-- CART 2 -->
     <joint name="cart2_joint" type="revolute">
         <parent link="cart"/>
         <child link="cart2"/>
@@ -255,6 +257,7 @@
         </xacro:inertial_box>
     </link>
 
+    <!-- CART 1 LEFT WHEEL -->
     <joint name="cart2_left_wheel_joint" type="continuous">
         <parent link="cart2"/>
         <child link="cart2_left_wheel"/>
@@ -283,6 +286,7 @@
         <material>Gazebo/Blue</material>
     </gazebo>
 
+    <!-- CART 2 RIGHT WHEEL -->
     <joint name="cart2_right_wheel_joint" type="continuous">
         <parent link="cart2"/>
         <child link="cart2_right_wheel"/>

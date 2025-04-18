@@ -8,6 +8,9 @@ from launch_ros.actions import Node
 def generate_launch_description():
     package_name = 'diff_drive_robot'
 
+    ros2_control_params = "/config/my_controllers.yaml"
+    controller_manager_timeout = ['--timeout', '5.0']
+
     rsp = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory(package_name), 'launch', 'rsp.launch.py'
@@ -24,19 +27,16 @@ def generate_launch_description():
                                    '-entity', 'my_bot'],
                         output='screen')
 
-    # Controllers node, now directly added to the LaunchDescription
-    controllers = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["diff_drive_controller", "--controller-manager-timeout", "50"],
-        parameters=[os.path.join(
-            get_package_share_directory(package_name), 'config', 'my_controllers.yaml')],
-        output="screen",
+    diff_drive_controller_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=["diff_drive_controller",
+                "--param-file", ros2_control_params] + controller_manager_timeout,
     )
 
     return LaunchDescription([
         rsp,
         gazebo,
         spawn_entity,
-        controllers,  # Directly adding it here without nesting in a list
+        diff_drive_controller_spawner,
     ])

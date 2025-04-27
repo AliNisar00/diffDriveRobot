@@ -30,8 +30,13 @@ def generate_launch_description():
     diff_drive_controller_spawner = Node(
         package='controller_manager',
         executable='spawner',
-        arguments=["diff_drive_controller",
-                "--param-file", ros2_control_params] + controller_manager_timeout,
+        arguments=["diff_drive_controller"],
+    )
+
+    joint_state_broadcaster_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=["joint_state_broadcaster"],
     )
 
     return LaunchDescription([
@@ -39,4 +44,5 @@ def generate_launch_description():
         gazebo,
         spawn_entity,
         diff_drive_controller_spawner,
+        joint_state_broadcaster_spawner,
     ])

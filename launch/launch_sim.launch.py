@@ -4,6 +4,8 @@ from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
+from launch.substitutions import Command
+
 
 def generate_launch_description():
     package_name = 'diff_drive_robot'
@@ -20,6 +22,24 @@ def generate_launch_description():
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
+    )
+
+    robot_state_publisher_node = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        name='robot_state_publisher',
+        output='screen',
+        parameters=[{
+            'use_sim_time': True,
+            'robot_description': Command([
+                'xacro ',
+                os.path.join(
+                    get_package_share_directory(package_name),
+                    'urdf',
+                    'robot.urdf.xacro'
+                )
+            ])
+        }]
     )
 
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
@@ -43,6 +63,7 @@ def generate_launch_description():
         rsp,
         gazebo,
         spawn_entity,
+        robot_state_publisher_node,
         diff_drive_controller_spawner,
         joint_state_broadcaster_spawner,
     ])

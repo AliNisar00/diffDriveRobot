@@ -4,7 +4,9 @@ from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
+from launch.substitutions import LaunchConfiguration
 from launch.substitutions import Command
+import xacro
 
 
 def generate_launch_description():
@@ -12,6 +14,14 @@ def generate_launch_description():
 
     ros2_control_params = "/config/my_controllers.yaml"
     controller_manager_timeout = ['--timeout', '5.0']
+
+    # Check if we're told to use sim time
+    use_sim_time = LaunchConfiguration('use_sim_time')
+
+    # Process the URDF file
+    pkg_path = os.path.join(get_package_share_directory('diff_drive_robot'))
+    xacro_file = os.path.join(pkg_path,'description','robot.urdf.xacro')
+    robot_description_config = xacro.process_file(xacro_file)
 
     rsp = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
@@ -24,22 +34,12 @@ def generate_launch_description():
             get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
     )
 
-    robot_state_publisher_node = Node(
+    params = {'robot_description': robot_description_config.toxml(), 'use_sim_time': use_sim_time}
+    node_robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
-        name='robot_state_publisher',
         output='screen',
-        parameters=[{
-            'use_sim_time': True,
-            'robot_description': Command([
-                'xacro ',
-                os.path.join(
-                    get_package_share_directory(package_name),
-                    'urdf',
-                    'robot.urdf.xacro'
-                )
-            ])
-        }]
+        parameters=[params]
     )
 
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
@@ -63,7 +63,7 @@ def generate_launch_description():
         rsp,
         gazebo,
         spawn_entity,
-        robot_state_publisher_node,
+        node_robot_state_publisher,
         diff_drive_controller_spawner,
         joint_state_broadcaster_spawner,
     ])

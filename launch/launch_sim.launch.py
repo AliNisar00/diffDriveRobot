@@ -29,6 +29,14 @@ def generate_launch_description():
         )]), launch_arguments={'use_sim_time': 'true'}.items()
     )
 
+    twist_mux_params = os.path.join(get_package_share_directory(package_name), 'config', 'twist_mux.yaml')
+    twist_mux = Node(
+        package='twist_mux',
+        executable='twist_mux',
+        parameters=[twist_mux_params, {'use_sim_time': True}],
+        remappings=[('/cmd_vel_out', '/diff_drive_controller/cmd_vel_unstamped')]
+    )
+
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
@@ -61,6 +69,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         rsp,
+        twist_mux,
         gazebo,
         spawn_entity,
         node_robot_state_publisher,

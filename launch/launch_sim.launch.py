@@ -98,7 +98,7 @@ def generate_launch_description():
         spawn_entity,
         node_robot_state_publisher,
         diff_drive_controller_spawner,
-        #joint_state_broadcaster_spawner,
+        joint_state_broadcaster_spawner,
         rviz_node,
         #rviz_delayed, # Uncomment this line to use delayed RViz launch
     ])

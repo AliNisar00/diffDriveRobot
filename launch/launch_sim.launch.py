@@ -85,9 +85,10 @@ def generate_launch_description():
         arguments=['-d', rviz_config_file]
     )
 
+    # Delayed RViz launch
     rviz_delayed = TimerAction(
-    period=15.0,  # seconds
-    actions=[rviz_node]
+        period=5.0,  # seconds
+        actions=[rviz_node]
     )
 
     return LaunchDescription([
@@ -98,5 +99,6 @@ def generate_launch_description():
         node_robot_state_publisher,
         diff_drive_controller_spawner,
         joint_state_broadcaster_spawner,
-        rviz_delayed,
+        rviz_node,
+        #rviz_delayed, # Uncomment this line to use delayed RViz launch
     ])

@@ -1,0 +1,42 @@
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/TF
+      Name: TF
+    - Class: rviz_default_plugins/RobotModel
+      Name: Robot Model
+      Description Topic: /robot_description
+    - Class: rviz_default_plugins/LaserScan
+      Name: LaserScan
+      Topic: /scan
+    - Class: rviz_default_plugins/Map
+      Name: Map
+      Topic: /map
+      Durability Policy: Transient Local
+    - Class: rviz_default_plugins/Map
+      Name: Global Costmap
+      Topic: /global_costmap/costmap
+      Durability Policy: Transient Local
+      Color Scheme: costmap
+  Enabled: true
+  Fixed Frame: map
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+    - Class: rviz_default_plugins/Measure
+    - Class: rviz_default_plugins/SetInitialPose
+    - Class: rviz_default_plugins/SetGoal
+  Value: true
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Name: Top Down View
+      Angle: 1.57
+      Scale: 37.3707
+      Target Frame: map
+      X: -1.28311
+      Y: 0.373246
+    Saved: ~

@@ -29,14 +29,14 @@ def generate_launch_description():
         launch_arguments={'use_sim_time': 'true'}.items()
     )
 
-    # Twist Mux
-    twist_mux_params = os.path.join(pkg_path, 'config', 'twist_mux.yaml')
-    twist_mux = Node(
-        package='twist_mux',
-        executable='twist_mux',
-        parameters=[twist_mux_params, {'use_sim_time': True}],
-        remappings=[('/cmd_vel_out', '/diff_drive_controller/cmd_vel_unstamped')]
-    )
+    # # Twist Mux
+    # twist_mux_params = os.path.join(pkg_path, 'config', 'twist_mux.yaml')
+    # twist_mux = Node(
+    #     package='twist_mux',
+    #     executable='twist_mux',
+    #     parameters=[twist_mux_params, {'use_sim_time': True}],
+    #     remappings=[('/cmd_vel_out', '/diff_drive_controller/cmd_vel_unstamped')]
+    # )
 
     # Gazebo
     gazebo = IncludeLaunchDescription(
@@ -62,18 +62,18 @@ def generate_launch_description():
         output='screen'
     )
 
-    # Controllers
-    diff_drive_controller_spawner = Node(
-        package='controller_manager',
-        executable='spawner',
-        arguments=["diff_drive_controller"]
-    )
+    # # Controllers
+    # diff_drive_controller_spawner = Node(
+    #     package='controller_manager',
+    #     executable='spawner',
+    #     arguments=["diff_drive_controller"]
+    # )
 
-    joint_state_broadcaster_spawner = Node(
-        package='controller_manager',
-        executable='spawner',
-        arguments=["joint_state_broadcaster"]
-    )
+    # joint_state_broadcaster_spawner = Node(
+    #     package='controller_manager',
+    #     executable='spawner',
+    #     arguments=["joint_state_broadcaster"]
+    # )
 
     # RViz2 custom config
     rviz_config_file = os.path.join(pkg_path, 'rviz', 'custom_view.rviz')
@@ -92,11 +92,11 @@ def generate_launch_description():
 
     return LaunchDescription([
         rsp,
-        twist_mux,
+        # twist_mux,
         gazebo,
         spawn_entity,
         node_robot_state_publisher,
-        diff_drive_controller_spawner,
-        joint_state_broadcaster_spawner,
+        # diff_drive_controller_spawner,
+        # joint_state_broadcaster_spawner,
         rviz_delayed,
     ])
